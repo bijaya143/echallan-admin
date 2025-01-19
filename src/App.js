@@ -7,7 +7,7 @@ import ProtectedRoute from "./utils/ProtectedRoutes";
 import Login from "./pages/authentication/Login";
 import AdminDashboard from "./pages/admin/dashboard/AdminDashboard";
 import AdminCustomer from "./pages/admin/customer/AdminCustomer";
-import AdminTicket from "./pages/admin/song/AdminTicket";
+import AdminTicket from "./pages/admin/ticket/AdminTicket";
 import AdminDispute from "./pages/admin/dispute/AdminDispute";
 
 function App() {

@@ -2,47 +2,39 @@ import React, { useEffect, useState } from "react";
 import "../../css/AdminDashboard.css";
 import AdminSidebar from "../../../components/AdminSidebar";
 import {
-  getArtistsApi,
   getCustomersApi,
-  getGenresApi,
-  getSongsApi,
+  getDisputesApi,
+  getTicketsApi,
 } from "../../../apis/Api";
 
 const AdminDashboard = () => {
-  const [songsCount, setSongsCount] = useState(0);
-  const [artistsCount, setArtistsCount] = useState(0);
+  const [ticketsCount, setTicketsCount] = useState(0);
+  const [disputesCount, setDisputesCount] = useState(0);
   const [usersCount, setUsersCount] = useState(0);
-  const [genresCount, setGenresCount] = useState(0);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchArtistsAndGenres = async () => {
-  //     try {
-  //       const [
-  //         artistsResponse,
-  //         genresResponse,
-  //         customersResponse,
-  //         songsResponse,
-  //       ] = await Promise.all([
-  //         getArtistsApi(),
-  //         getGenresApi(),
-  //         getCustomersApi(),
-  //         getSongsApi(1),
-  //       ]);
-  //       setArtistsCount(artistsResponse.data.data.artist.length);
-  //       setGenresCount(genresResponse.data.data.genre.length);
-  //       setSongsCount(songsResponse.data.data.song.length);
-  //       setUsersCount(customersResponse.data.data.users.length);
-  //     } catch (err) {
-  //       console.error("Error fetching data:", err);
-  //       setError(
-  //         "An error occurred while fetching data. Please try again later."
-  //       );
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchDashboard = async () => {
+      try {
+        const [ticketsResponse, customersResponse, disputesResponse] =
+          await Promise.all([
+            getTicketsApi(),
+            getCustomersApi(),
+            getDisputesApi(1),
+          ]);
+        setTicketsCount(ticketsResponse.data.meta.total);
+        setDisputesCount(disputesResponse.data.meta.total);
+        setUsersCount(customersResponse.data.meta.total);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError(
+          "An error occurred while fetching data. Please try again later."
+        );
+      }
+    };
 
-  //   fetchArtistsAndGenres();
-  // }, []);
+    fetchDashboard();
+  }, []);
 
   return (
     <div className="dashboard">
@@ -65,21 +57,21 @@ const AdminDashboard = () => {
               <h3>Tickets</h3>
               <span className="dashboard-card-icon">📄</span>
             </div>
-            <p className="dashboard-card-value">{songsCount}</p>
+            <p className="dashboard-card-value">{ticketsCount}</p>
           </div>
           <div className="dashboard-card">
             <div className="dashboard-card-header">
               <h3>Disputes</h3>
               <span className="dashboard-card-icon">⚠️</span>
             </div>
-            <p className="dashboard-card-value">{artistsCount}</p>
+            <p className="dashboard-card-value">{disputesCount}</p>
           </div>
           <div className="dashboard-card">
             <div className="dashboard-card-header">
               <h3>Road Traffic</h3>
               <span className="dashboard-card-icon">🚦</span>
             </div>
-            <p className="dashboard-card-value">{genresCount}</p>
+            <p className="dashboard-card-value">{disputesCount}</p>
           </div>
         </div>
       </div>
