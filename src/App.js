@@ -8,6 +8,7 @@ import Login from "./pages/authentication/Login";
 import AdminDashboard from "./pages/admin/dashboard/AdminDashboard";
 import AdminCustomer from "./pages/admin/customer/AdminCustomer";
 import AdminTicket from "./pages/admin/song/AdminTicket";
+import AdminDispute from "./pages/admin/dispute/AdminDispute";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminTicket />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/disputes"
+          element={
+            <ProtectedRoute>
+              <AdminDispute />
             </ProtectedRoute>
           }
         />

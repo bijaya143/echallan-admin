@@ -28,19 +28,7 @@ Api.interceptors.response.use(
 
 // ** ==================== Authentication API ======================== ** //
 export const loginUserApi = (data) => Api.post("/auth/login", data);
-export const registerUserApi = (data) => Api.post("/auth/register", data);
-export const oauthApi = (data) => Api.post("/auth/oauth", data);
 
-// ** ==================== Tickets API ======================== ** //
-export const getTopArtistsApi = () => Api.get("/artist", getHeaders());
-export const getArtistsApi = () => Api.get("/artist", getHeaders());
-export const getArtistApi = (id) => Api.get(`/artist/${id}`, getHeaders());
-export const increaseArtistStreamCountApi = (id, keyword) =>
-  Api.patch(
-    `/artist/stream-count/${id}?keyword=${keyword}`,
-    undefined,
-    getHeaders()
-  );
 
 
   
@@ -50,3 +38,7 @@ export const getCustomersApi = () => Api.get(`/user`, getHeaders());
 // Tickets
 export const getTicketsApi = () =>
   Api.get(`/ticket`, getHeaders());
+
+// Disputes
+export const getDisputesApi = () =>
+  Api.get(`/dispute`, getHeaders());

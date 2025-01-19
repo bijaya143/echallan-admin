@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../css/AdminCustomer.css";
 import AdminSidebar from "../../../components/AdminSidebar";
-import { getCustomersApi } from "../../../apis/Api";
+import { getDisputesApi } from "../../../apis/Api";
 
-const AdminCustomer = () => {
+const AdminDispute = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5); // Number of items per page
@@ -11,7 +11,7 @@ const AdminCustomer = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    getCustomersApi()
+    getDisputesApi()
       .then((res) => {
         setCustomers(res.data.data);
       })
@@ -19,8 +19,7 @@ const AdminCustomer = () => {
   }, []);
 
   const filteredCustomers = customers.filter((customer) =>
-    // customer.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.phone.toLowerCase().includes(searchTerm.toLowerCase())
+    customer.ticket.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -56,16 +55,15 @@ const AdminCustomer = () => {
       <div className="customer-table-content">
         <header className="header">
           <div className="header-top">
-            <h1>Users</h1>
+            <h1>Disputes</h1>
             <div className="header-actions">
               <input
                 type="text"
-                placeholder="Search by phone number"
+                placeholder="Search by ticket number"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-bar"
               />
-              {/* <button className="btn-add">Add</button> */}
             </div>
           </div>
         </header>
@@ -74,12 +72,10 @@ const AdminCustomer = () => {
             <thead>
               <tr>
                 <th onClick={() => requestSort("id")}>ID</th>
-                <th>Image</th>
-                <th onClick={() => requestSort("email")}>Email</th>
-                <th onClick={() => requestSort("phone")}>Phone</th>
-                <th onClick={() => requestSort("fullName")}>Full Name</th>
-                <th onClick={() => requestSort("gender")}>Gender</th>
-                {/* <th>Actions</th> */}
+                <th onClick={() => requestSort("user")}>User</th>
+                <th onClick={() => requestSort("ticket")}>Ticket Number</th>
+                <th onClick={() => requestSort("reason")}>Reason</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -88,31 +84,21 @@ const AdminCustomer = () => {
                 .map((customer) => (
                   <tr key={customer.id}>
                     <td>{customer.id}</td>
+                    <td>{customer.user.phone || ""}</td>
+                    <td>{customer.ticket.id}</td>
+                    <td>{customer.reason}</td>
                     <td>
-                      <img
-                        height={50}
-                        width={50}
-                        src={`${process.env.REACT_APP_BACKEND_IMAGE_BASE_URL}${customer.profileImage}`}
-                        alt=""
-                        srcset=""
-                        onError={({ currentTarget }) => {
-                          currentTarget.onerror = null; // prevents looping
-                          currentTarget.src =
-                            "/assets/images/default_image.jpg";
-                        }}
-                        style={{ objectFit: "cover" }}
-                      />{" "}
+                      {" "}
+                      {customer.status == "APPROVED" ? (
+                        <span class="badge bg-success">{customer.status}</span>
+                      ) : customer.status == "PENDING" ? (
+                        <span class="badge bg-warning">{customer.status}</span>
+                      ) : customer.status == "CANCELED" ? (
+                        <span class="badge bg-danger">{customer.status}</span>
+                      ) : (
+                        <span class="badge bg-info">{customer.status}</span>
+                      )}
                     </td>
-                    <td>{customer.email ?? ""}</td>
-                    <td>{customer.phone}</td>
-                    <td>{customer.fullName}</td>
-                    <td>{customer.gender}</td>
-                    {/* <td>
-                      <div className="actions">
-                        <button className="btn-edit">Edit</button>
-                        <button className="btn-delete">Delete</button>
-                      </div>
-                    </td> */}
                   </tr>
                 ))}
             </tbody>
@@ -139,4 +125,4 @@ const AdminCustomer = () => {
   );
 };
 
-export default AdminCustomer;
+export default AdminDispute;
