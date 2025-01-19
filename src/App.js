@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import Login from "./pages/authentication/Login";
+import AdminDashboard from "./pages/admin/dashboard/AdminDashboard";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Login />
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />
