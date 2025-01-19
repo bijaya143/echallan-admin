@@ -43,12 +43,12 @@ const AdminSidebar = () => {
               Disputes
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/admin/road-traffic" activeClassName="active">
               <FontAwesomeIcon icon={faTrafficLight} className="sidebar-icon" />{" "}
               Road Traffic
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>
