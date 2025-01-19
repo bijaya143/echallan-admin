@@ -46,3 +46,7 @@ export const increaseArtistStreamCountApi = (id, keyword) =>
   
 // ** ==================== Admins API ======================== ** //
 export const getCustomersApi = () => Api.get(`/user`, getHeaders());
+
+// Tickets
+export const getTicketsApi = () =>
+  Api.get(`/ticket`, getHeaders());
