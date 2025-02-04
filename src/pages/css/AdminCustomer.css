@@ -8,7 +8,7 @@
   padding: 20px;
   background-color: #f8f9fa;
   margin-left: 0px;
-  box-sizing: border-box; /* Ensure padding does not affect width */
+  box-sizing: border-box;
 }
 
 .header {
