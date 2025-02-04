@@ -7,7 +7,7 @@
   flex: 1;
   padding: 20px;
   background-color: #f8f9fa;
-  margin-left: 0px; /* Adjust margin to accommodate the sidebar */
+  margin-left: 0px;
   box-sizing: border-box; /* Ensure padding does not affect width */
 }
 
