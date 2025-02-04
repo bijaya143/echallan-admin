@@ -34,7 +34,7 @@
 .search-bar {
   padding: 10px 15px;
   border: 1px solid #ccc;
-  border-radius: 8px; /* Rounded corners for a modern appearance */
+  border-radius: 8px;
   width: 100%;
   max-width: 400px; /* Limit width for better control */
   margin-right: 20px; /* Space between search bar and button */
