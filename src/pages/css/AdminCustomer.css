@@ -36,7 +36,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 100%;
-  max-width: 400px; /* Limit width for better control */
+  max-width: 400px;
   margin-right: 20px; /* Space between search bar and button */
   font-size: 1rem;
   color: #333; /* Dark text color for readability */
