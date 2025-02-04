@@ -58,7 +58,7 @@
 
 .sidebar-nav a:hover {
   background-color: #e9ecef;
-  color: #007bff; /* Highlight color on hover */
+  color: #007bff; 
 }
 
 .sidebar-nav a.active {
