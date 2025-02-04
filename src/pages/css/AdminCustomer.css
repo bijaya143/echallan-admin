@@ -1,6 +1,6 @@
 .customer-table-container {
   display: flex;
-  min-height: 100vh; /* Ensure it takes up at least the full viewport height */
+  min-height: 100vh;
 }
 
 .customer-table-content {
