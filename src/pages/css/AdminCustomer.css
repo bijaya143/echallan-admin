@@ -6,7 +6,7 @@
 .customer-table-content {
   flex: 1;
   padding: 20px;
-  background-color: #f8f9fa; /* Light background color for content area */
+  background-color: #f8f9fa;
   margin-left: 0px; /* Adjust margin to accommodate the sidebar */
   box-sizing: border-box; /* Ensure padding does not affect width */
 }
